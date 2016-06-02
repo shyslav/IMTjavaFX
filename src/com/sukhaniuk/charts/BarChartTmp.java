@@ -28,7 +28,7 @@ public class BarChartTmp {
     public static StackedBarChart generateStackedChart(StackedBarChart chart, ArrayList<IMT> imt)
     {
         int counter = 0;
-        chart.setTitle("Ватість розв'язку");
+        chart.setTitle("Вартість розв'язку");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
 

@@ -30,7 +30,7 @@ public class readFromFile {
         boolean done = true;
         try {
             Scanner scanner = new Scanner(Paths.get(path));
-            int n = Integer.parseInt(scanner.nextLine());
+            int n = Integer.parseInt(scanner.nextLine().trim());
             d = new int[n];
             A = new int[n];
             h = new int[n];
@@ -40,7 +40,7 @@ public class readFromFile {
                     done = false;
                     break;
                 }
-                switch (element[0])
+                switch (element[0].trim())
                 {
                     case "d":
                         d = read.copy(element);
