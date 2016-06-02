@@ -2,6 +2,7 @@ package com.shyslav.controllers;
 
 import com.shyslav.func.IMT;
 import com.shyslav.func.IMTStartAlgo;
+import com.shyslav.func._IMTStartAlgo;
 import com.sukhaniuk.func.readFromFile;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -46,7 +47,7 @@ public class Controller {
     {
         stackedBarChartbarChart.getData().clear();
         stackedBarChartbarChartT1.getData().clear();
-        IMTStartAlgo main = new IMTStartAlgo(d,A,h,n);
+        _IMTStartAlgo main = new _IMTStartAlgo(d,A,h,n);
         imt = new ArrayList(main.run());
         if(imt.size()!=0) {
             tableInitialize();

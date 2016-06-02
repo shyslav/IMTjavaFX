@@ -2,7 +2,7 @@ package com.shyslav.func;
 
 import java.util.ArrayList;
 
-public class IMTStartAlgo {
+public class _IMTStartAlgo {
     //Обьем посвки в k-м периоре
     private int[] x;
     //Сумарный спрос на k-м преоде
@@ -26,11 +26,10 @@ public class IMTStartAlgo {
     ArrayList<Way> way = new ArrayList<>();
     ArrayList<IMT> imt = new ArrayList<>();
 
-    public IMTStartAlgo(int[] d, int[] a, int[] h, int n) {
-        c = new int [] {1,1,1,1,1,1};
+    public _IMTStartAlgo(int[] d, int[] a, int[] h, int n) {
+        this.c = new int [] {10,10,10,100,100,10,10};
         x = new int[n];
         y = new int[n];
-        c = new int[n];
         f = new int[n + 1];
         f[f.length - 1] = 0;
         this.d = d;
@@ -38,73 +37,6 @@ public class IMTStartAlgo {
         this.h = h;
         this.n = n;
     }
-
-
-    //    public IMTStartAlgo(int n) {
-//        this.n = n;
-////        d = new int [n];
-//        x = new int[n];
-//        y = new int[n];
-//        c = new int[n];
-//        A = new int[n];
-//        h = new int[n];
-//        f = new int[n + 1];
-//        //**************************
-//        d = new int[]{15, 8, 20, 11, 8, 15};
-//        for (int i = 0; i < n; i++) {
-//            A[i] = 50;
-//            h[i] = 5;
-//            f[i] = 0;
-//        }
-//        f[f.length - 1] = 0;
-//    }
-
-//    public Main(int n) {
-//        this.n = n;
-////        d = new int [n];
-//        x = new int[n];
-//        y = new int[n];
-//        c = new int[n];
-//        A = new int[n];
-//        h = new int[n];
-//        f = new int[n + 1];
-//        //**************************
-//        d = new int[]{30, 30, 30, 30, 30, 30, 30};
-//        A = new int [] {200,200,200,200,200,200,200};
-//        h = new int [] {5,3,5,5,4,1,2};
-//        f[f.length - 1] = 0;
-//    }
-
-//    public Main(int n) {
-//        this.n = n;
-////        d = new int [n];
-//        x = new int[n];
-//        y = new int[n];
-//        c = new int[n];
-//        A = new int[n];
-//        h = new int[n];
-//        f = new int[n + 1];
-//        //**************************
-//        d = new int[]{25, 10, 60, 40, 25, 10, 45};
-//        A = new int [] {100,100,250,250,250,150,150};
-//        h = new int [] {2,2,2,2,2,2,2};
-//        f[f.length - 1] = 0;
-//    }
-
-//    public Main(int n) {
-//        this.n = n;
-//        x = new int[n];
-//        y = new int[n];
-//        c = new int[n];
-//        A = new int[n];
-//        h = new int[n];
-//        f = new int[n + 1];
-//        //**************************
-//        d = new int[]{10, 100, 60, 30, 115, 70};
-//        A = new int [] {150,150,200,150,250,150};
-//        h = new int [] {2,3,1,1,1,1};
-//        f[f.length - 1] = 0;
-//    }
 
     public ArrayList<IMT> run() {
         System.out.println("Start algo");
@@ -142,7 +74,7 @@ public class IMTStartAlgo {
             //посчитать сумму h*d
             int sumStor = sumStore(x, k);
             //посчитать полную сумму
-            tmp = f[tr] + A[x] + sumStor;
+            tmp = f[tr] + A[x] +sumC(x,k,sumStor) + sumStor;
             //добавить формулу
             form.add(generateFormula(tr,x,k)+" = "+f[tr]+"+"+A[x]+"+"+sumStor + " = " +tmp);
             //добавить шаг
@@ -186,6 +118,18 @@ public class IMTStartAlgo {
                 sum += h[i] * d[j];
             }
         }
+        return sum;
+    }
+    private int sumC(int step, int k , int h) {
+        if(h == 0)
+        {
+            int z = c[k-1]*d[k-1];
+            return z;
+        }
+        int sum = 0;
+        for (int i = step; i < k; i++) {
+                sum += c[i] * (d[i]);
+            }
         return sum;
     }
 
