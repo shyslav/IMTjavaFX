@@ -15,7 +15,6 @@ public class StartFrame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage=primaryStage;
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(fxmlLoader.class.getResource("mainFrame.fxml"));
         Parent root = loader.load();
@@ -24,12 +23,7 @@ public class StartFrame extends Application {
         primaryStage.show();
         controller = loader.getController();
     }
-//    public static void showMainItems() throws IOException {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(Main.class.getResource("../fxml/LoginForm.fxml"));
-//        BorderPane mainItem = loader.load();
-//        mainLayout.setCenter(mainItem);
-//    }
+
     public static void newElementAdd()
     {
         newElementForm newElement = new newElementForm("Ввести данні",primaryStage);

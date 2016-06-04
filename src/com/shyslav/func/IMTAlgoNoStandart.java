@@ -2,7 +2,7 @@ package com.shyslav.func;
 
 import java.util.ArrayList;
 
-public class _IMTStartAlgo {
+public class IMTAlgoNoStandart {
     //Обьем посвки в k-м периоре
     private int[] x;
     //Сумарный спрос на k-м преоде
@@ -17,7 +17,7 @@ public class _IMTStartAlgo {
     int[] h;
 
     //количество периодов
-    int n = 6;
+    int n;
 
     int l = 1;
 
@@ -26,8 +26,7 @@ public class _IMTStartAlgo {
     ArrayList<Way> way = new ArrayList<>();
     ArrayList<IMT> imt = new ArrayList<>();
 
-    public _IMTStartAlgo(int[] d, int[] a, int[] h, int n) {
-        this.c = new int [] {10,10,10,100,100,10,10};
+    public IMTAlgoNoStandart(int[] d, int[] a, int[] h,int [] c, int n) {
         x = new int[n];
         y = new int[n];
         f = new int[n + 1];
@@ -36,28 +35,24 @@ public class _IMTStartAlgo {
         this.A = a;
         this.h = h;
         this.n = n;
+        this.c = c;
     }
 
     public ArrayList<IMT> run() {
-        System.out.println("Start algo");
+        System.out.println("----Алгоритм с дополнительным условием----");
         start();
         return imt;
     }
 
     private void start() {
         for (int i = 0; i < n; i++) {
-            if (i == 0) {
-                f[i + 1] = minValue(i + 1, l);
-            } else {
-                f[i + 1] = minValue(i + 1, l);
-            }
+            f[i + 1] = minValue(i + 1, l);
         }
         getWay();
-        System.out.println();
-        for (int i = 0 ; i<x.length;i++)
-        {
-            System.out.print(" " +x[i]);
+        for (int i = 0; i < x.length; i++) {
+            System.out.print(" " + x[i]);
         }
+        System.out.println();
     }
 
     private int minValue(int k, int lValue) {
@@ -73,13 +68,14 @@ public class _IMTStartAlgo {
         for (int x = lValue - 1; x < k; x++) {
             //посчитать сумму h*d
             int sumStor = sumStore(x, k);
+            //Сумма дополнительных переменных
+            int sumC = sumC(x, k, sumStor);
             //посчитать полную сумму
-            tmp = f[tr] + A[x] +sumC(x,k,sumStor) + sumStor;
+            tmp = f[tr] + A[x] + sumC + sumStor;
             //добавить формулу
-            form.add(generateFormula(tr,x,k)+" = "+f[tr]+"+"+A[x]+"+"+sumStor + " = " +tmp);
+            form.add(generateFormula(tr, x, k, sumStor) + " = " + f[tr] + "+" + A[x] + "+" + sumC + "+" + sumStor + " = " + tmp);
             //добавить шаг
-            step.add(String.valueOf(x+1));
-            System.out.println(tmp);
+            step.add(String.valueOf(x + 1));
             keys.add(new KeyValue(x + 1, tmp));
             //увеличить шаг по f на 1
             tr++;
@@ -87,13 +83,24 @@ public class _IMTStartAlgo {
         //Минимальное число из массива ключ-значение
         int minimum = minimum(keys);
         //добавить в лист для таблицы
-        imt.add(new IMT(k,step,form,l,minimum));
+        imt.add(new IMT(k, step, form, l, minimum));
         return minimum;
     }
 
-    private String generateFormula(int indF ,int step,int k)
-    {
-        String formula = "f["+indF+"] + A["+step+"] ";
+    private String generateCFormula(int step, int k, int resultSumH) {
+        String formula = "";
+        if (resultSumH == 0) {
+            formula = "+ C[" + k + "]" + "*d[" + k + "]";
+            return formula;
+        }
+        for (int i = step; i < k; i++) {
+            formula += "+ C[" + (step + 1) + "]*d[" + (i + 1) + "] ";
+        }
+        return formula;
+    }
+
+    private String generateFormula(int indF, int step, int k, int resultSumH) {
+        String formula = "f[" + indF + "] + A[" + (step + 1) + "]" + generateCFormula(step, k, resultSumH);
         int sum = 0;
         int newI = 0;
         int newJ = 0;
@@ -105,12 +112,12 @@ public class _IMTStartAlgo {
                 sum += (h[i] * d[j]);
             }
         }
-        if(sum==0)
-        {
-            return formula+" + 0";
+        if (sum == 0) {
+            return formula + " + 0";
         }
         return formula;
     }
+
     private int sumStore(int step, int k) {
         int sum = 0;
         for (int i = step; i < k - 1; i++) {
@@ -120,16 +127,16 @@ public class _IMTStartAlgo {
         }
         return sum;
     }
-    private int sumC(int step, int k , int h) {
-        if(h == 0)
-        {
-            int z = c[k-1]*d[k-1];
+
+    private int sumC(int step, int k, int h) {
+        if (h == 0) {
+            int z = c[k - 1] * d[k - 1];
             return z;
         }
         int sum = 0;
         for (int i = step; i < k; i++) {
-                sum += c[i] * (d[i]);
-            }
+            sum += c[step] * (d[i]);
+        }
         return sum;
     }
 
@@ -141,76 +148,60 @@ public class _IMTStartAlgo {
                 l = list.get(i).getKey();
             }
         }
-        System.out.println(l);
-        way.add(new Way(min,l,l-1));
+        way.add(new Way(min, l, l - 1));
         return min;
     }
 
-    private void getWay()
-    {
+    private void getWay() {
         ArrayList<Integer> getAway = new ArrayList<>();
-        System.out.println("*********************************");
-        for (int i = way.size()-1; i >= 0; )
-        {
-            if(way.get(i).getIndF()==i)
-            {
+        for (int i = way.size() - 1; i >= 0; ) {
+            if (way.get(i).getIndF() == i) {
                 getAway.add(way.get(i).getIndA());
-                System.out.print("*"+way.get(i).getIndA());
                 i--;
-            }else
-            {
+            } else {
                 getAway.add(way.get(i).getIndA());
-                System.out.print("*"+way.get(i).getIndA());
-                i = way.get(i).getIndF()-1;
+                i = way.get(i).getIndF() - 1;
             }
         }
         generateAnswer(getAway);
     }
-    private void generateAnswer(ArrayList<Integer> getAway)
-    {
-        System.out.println("\n*********************************");
+
+    private void generateAnswer(ArrayList<Integer> getAway) {
         int sum = 0;
         int org = 0;
         boolean twoSumm = false;
         int amountSum = 0;
-        for (int i = 1 ; i <= n ; i++)
-        {
-            if(search(getAway,i+1))
-            {
-                sum += d[i-1];
-                setX(sum,org);
-                if(twoSumm)
-                {
-                    org+=amountSum;
+        for (int i = 1; i <= n; i++) {
+            if (search(getAway, i + 1)) {
+                sum += d[i - 1];
+                setX(sum, org);
+                if (twoSumm) {
+                    org += amountSum;
                     amountSum = 0;
                     twoSumm = false;
                 }
                 org++;
-                sum=0;
-            }else
-            {
+                sum = 0;
+            } else {
                 twoSumm = true;
                 amountSum++;
-                sum+=d[i-1];
+                sum += d[i - 1];
             }
         }
-        setX(sum,org);
+        setX(sum, org);
     }
-    private boolean search(ArrayList<Integer> getAway, int find)
-    {
 
-        for (int i = 0 ; i < getAway.size() ; i++)
-        {
-            if(getAway.get(i)== find)
-            {
+    private boolean search(ArrayList<Integer> getAway, int find) {
+
+        for (int i = 0; i < getAway.size(); i++) {
+            if (getAway.get(i) == find) {
                 return true;
             }
         }
-
         return false;
     }
 
-    private void setX(int value ,int p) {
+    private void setX(int value, int p) {
         x[p] = value;
     }
 
