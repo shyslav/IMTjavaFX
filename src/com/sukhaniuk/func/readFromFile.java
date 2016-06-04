@@ -83,6 +83,12 @@ public class readFromFile {
         }
         return true;
     }
+
+    /**
+     * Преобразование массива стрингов в массив интов
+     * @param element массив стрингов
+     * @return массив интов
+     */
     private int[] copy(String [] element)
     {
         int [] res = new int[element.length-1];
