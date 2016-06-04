@@ -12,17 +12,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.sukhaniuk.charts.BarChartTmp;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import starter.StartFrame;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Controller {
     //Элементы стандартного алгоритма
@@ -147,5 +148,15 @@ public class Controller {
         if (file != null) {
             readFromFile.read(file.getPath());
         }
+    }
+
+    public void сloseProgramm(ActionEvent event) {
+        StartFrame.getPrimaryStage().getOnCloseRequest()
+                .handle(
+                        new WindowEvent(
+                                StartFrame.getPrimaryStage(),
+                                WindowEvent.WINDOW_CLOSE_REQUEST
+                        )
+                );
     }
 }

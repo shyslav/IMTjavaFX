@@ -17,16 +17,15 @@
           <items>
             <MenuItem fx:id="menuNewClick" mnemonicParsing="false" onAction="#newMenuItemGenerateDataToIMT" text="Ввести дані" />
             <MenuItem mnemonicParsing="false" onAction="#readFromFile" text="Зчитати з txt" />
-            <MenuItem mnemonicParsing="false" text="Змінити значення" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <Menu mnemonicParsing="false" text="Зберегти">
+            <Menu mnemonicParsing="false" text="Зберегти відповідь">
                      <items>
                         <MenuItem mnemonicParsing="false" text="В pdf" />
                         <MenuItem mnemonicParsing="false" text="В txt" />
                      </items></Menu>
-            <MenuItem mnemonicParsing="false" text="Зберегти значення" />
+            <MenuItem mnemonicParsing="false" text="Зберегти поточні значення" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Вихід" />
+            <MenuItem mnemonicParsing="false" onAction="#сloseProgramm" text="Вихід" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="О программе">

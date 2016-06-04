@@ -61,11 +61,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="newElementForm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="newElementForm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/shyslav/form/newElementForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.5591397">
-              <caret line="208" column="40" selection-start-line="208" selection-start-column="40" selection-end-line="208" selection-end-column="40" />
+            <state vertical-scroll-proportion="-8.413794">
+              <caret line="304" column="8" selection-start-line="304" selection-start-column="8" selection-end-line="304" selection-end-column="32" />
               <folding>
                 <element signature="e#10802#10803#0" expanded="true" />
                 <element signature="e#10841#10842#0" expanded="true" />
@@ -73,6 +73,29 @@
                 <element signature="e#10898#10899#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StartFrame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/starter/StartFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="38" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainFrame.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/fxml/mainFrame.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6545455">
+              <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -86,25 +109,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0689654">
-              <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.5978495">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding>
-                <element signature="e#5108#5109#0" expanded="true" />
-                <element signature="e#5150#5151#0" expanded="true" />
+                <element signature="e#5109#5110#0" expanded="true" />
+                <element signature="e#5151#5152#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LineChartTmp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/charts/LineChartTmp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -137,15 +150,15 @@
         <option value="$PROJECT_DIR$/src/com/shyslav/func/IMTStartAlgo.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/func/_IMTStartAlgo.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/func/IMT.java" />
-        <option value="$PROJECT_DIR$/src/starter/StartFrame.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/func/IMTAlgoStandart.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/func/IMTAlgoNoStandart.java" />
         <option value="$PROJECT_DIR$/src/com/sukhaniuk/func/readFromFile.java" />
-        <option value="$PROJECT_DIR$/src/com/sukhaniuk/fxml/mainFrame.fxml" />
         <option value="$PROJECT_DIR$/src/com/sukhaniuk/charts/LineChartTmp.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java" />
-        <option value="$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/form/newElementForm.java" />
+        <option value="$PROJECT_DIR$/src/com/sukhaniuk/fxml/mainFrame.fxml" />
+        <option value="$PROJECT_DIR$/src/starter/StartFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java" />
       </list>
     </option>
   </component>
@@ -948,12 +961,12 @@
       <workItem from="1464850098401" duration="3050000" />
       <workItem from="1464936412571" duration="1160000" />
       <workItem from="1465045779473" duration="6722000" />
-      <workItem from="1465056058603" duration="10593000" />
+      <workItem from="1465056058603" duration="11636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23075000" />
+    <option name="totallyTimeSpent" value="24118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
@@ -1037,8 +1050,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5108#5109#0" expanded="true" />
-            <element signature="e#5150#5151#0" expanded="true" />
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5151#5152#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1093,8 +1106,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
           <folding>
-            <element signature="e#5108#5109#0" expanded="true" />
-            <element signature="e#5150#5151#0" expanded="true" />
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5151#5152#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1133,8 +1146,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
           <folding>
-            <element signature="e#5108#5109#0" expanded="true" />
-            <element signature="e#5150#5151#0" expanded="true" />
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5151#5152#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1214,25 +1227,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/starter/StartFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20427236">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/fxml/mainFrame.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5170843">
-          <caret line="192" column="39" selection-start-line="192" selection-start-column="39" selection-end-line="192" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/com/sun/glass/ui/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3319838">
@@ -1249,23 +1243,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/charts/LineChartTmp.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/event/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.6514806">
+          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/fxml/mainFrame.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0689654">
-          <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
-          <folding>
-            <element signature="e#5108#5109#0" expanded="true" />
-            <element signature="e#5150#5151#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-2.6545455">
+          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java">
@@ -1276,23 +1270,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/event/Event.java">
+    <entry file="file://$PROJECT_DIR$/src/starter/StartFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6514806">
-          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/charts/LineChartTmp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67611337">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/shyslav/form/newElementForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5591397">
-          <caret line="208" column="40" selection-start-line="208" selection-start-column="40" selection-end-line="208" selection-end-column="40" />
+        <state vertical-scroll-proportion="-8.413794">
+          <caret line="304" column="8" selection-start-line="304" selection-start-column="8" selection-end-line="304" selection-end-column="32" />
           <folding>
             <element signature="e#10802#10803#0" expanded="true" />
             <element signature="e#10841#10842#0" expanded="true" />
             <element signature="e#10872#10873#0" expanded="true" />
             <element signature="e#10898#10899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5978495">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5151#5152#0" expanded="true" />
           </folding>
         </state>
       </provider>
