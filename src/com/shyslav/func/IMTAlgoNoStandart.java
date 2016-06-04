@@ -208,4 +208,36 @@ public class IMTAlgoNoStandart {
     public int[] getX() {
         return x;
     }
+
+    public int[] getD() {
+        return d;
+    }
+
+    public int[] getY() {
+        return y;
+    }
+
+    public int[] getC() {
+        return c;
+    }
+
+    public int[] getA() {
+        return A;
+    }
+
+    public int[] getH() {
+        return h;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public int getL() {
+        return l;
+    }
+
+    public int[] getF() {
+        return f;
+    }
 }

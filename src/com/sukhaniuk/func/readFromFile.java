@@ -94,7 +94,7 @@ public class readFromFile {
         int [] res = new int[element.length-1];
         for (int i = 1; i < element.length;i++)
         {
-            res[i-1]= Integer.parseInt(element[i]);
+            res[i-1]= Integer.parseInt(element[i].trim());
         }
         return res;
     }

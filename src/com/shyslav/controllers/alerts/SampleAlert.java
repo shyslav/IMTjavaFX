@@ -15,9 +15,9 @@ public class SampleAlert {
         SampleAlert sa = new SampleAlert("Ошибка ввода",
                 "Проверьте правильность введенных данных","Все поля должны быть заполненны правильными данными, правильные данные отображаются зеленым цветом", Alert.AlertType.ERROR);
     }
-    public static void RuleError()
+    public static void SaveError()
     {
-        SampleAlert sa = new SampleAlert("Ошибка доступа","Данный раздел для вас закрыт","Обратитесь к администратору для выдачи прав", Alert.AlertType.ERROR);
+        SampleAlert sa = new SampleAlert("Ошибка сохранения","Нечего сохранять","Для выполнения этого действия нужно ввести значения", Alert.AlertType.ERROR);
     }
     public static void ConnectionError()
     {

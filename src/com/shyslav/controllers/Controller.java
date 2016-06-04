@@ -1,9 +1,11 @@
 package com.shyslav.controllers;
 
+import com.shyslav.controllers.alerts.SampleAlert;
 import com.shyslav.func.IMT;
 import com.shyslav.func.IMTAlgoNoStandart;
 import com.shyslav.func.IMTAlgoStandart;
 import com.sukhaniuk.charts.LineChartTmp;
+import com.sukhaniuk.func.fileSave;
 import com.sukhaniuk.func.readFromFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,7 +67,8 @@ public class Controller {
     private StackedBarChart stackedBarChartbarChartNoStandartT1;
     @FXML
     private LineChart lineChart;
-
+    private IMTAlgoStandart standart;
+    private IMTAlgoNoStandart noStandart;
     private ArrayList<IMT> imtStandartList;
     private ArrayList<IMT> imtNoStandartList;
 
@@ -85,7 +88,7 @@ public class Controller {
      */
     public void dataOutput(int[] h, int[] d, int[] A, int[] C, int n) {
         clearDataStackedBarChart();
-        IMTAlgoStandart standart = new IMTAlgoStandart(d, A, h, n);
+        standart = new IMTAlgoStandart(d, A, h, n);
         //заполнить лист стандартного алгоритма
         imtStandartList = new ArrayList(standart.run());
 
@@ -97,7 +100,7 @@ public class Controller {
             stackedBarChartbarChartT1 = BarChartTmp.generateBarChart(stackedBarChartbarChartT1, imtStandartList, standart.getX());
         }
 
-        IMTAlgoNoStandart noStandart = new IMTAlgoNoStandart(d, A, h, C, n);
+        noStandart = new IMTAlgoNoStandart(d, A, h, C, n);
         imtNoStandartList = new ArrayList(noStandart.run());
         if (imtNoStandartList.size() != 0) {
             tableNoStandartInitialize();
@@ -119,6 +122,9 @@ public class Controller {
         stackedBarChartbarChartNoStandartT1.getData().clear();
     }
 
+    /**
+     * Инициализация таблицы стандатртного алогоритма
+     */
     private void tableStandartInitialize() {
         StepsK.setCellValueFactory(new PropertyValueFactory<>("k"));
         StepsJ.setCellValueFactory(new PropertyValueFactory<>("j"));
@@ -128,6 +134,9 @@ public class Controller {
         table.setItems(FXCollections.observableList(imtStandartList));
     }
 
+    /**
+     * Инициализация табилцы дополнительного алгоритма
+     */
     private void tableNoStandartInitialize() {
         StepsKNoStandart.setCellValueFactory(new PropertyValueFactory<>("k"));
         StepsJNoStandart.setCellValueFactory(new PropertyValueFactory<>("j"));
@@ -137,10 +146,18 @@ public class Controller {
         tableNoStandart.setItems(FXCollections.observableList(imtNoStandartList));
     }
 
+    /**
+     * Ивент на нажатие в меня "Ввести значения"
+     * @param event
+     */
     public void newMenuItemGenerateDataToIMT(ActionEvent event) {
         StartFrame.newElementAdd();
     }
 
+    /**
+     * Ивен на нажатие в меню "Считать с файла"
+     * @param event
+     */
     public void readFromFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         readFromFile.configureFileChooser(fileChooser, "Обрати файл");
@@ -150,6 +167,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Ивент на нажатие в меню "Выход"
+     * @param event
+     */
     public void сloseProgramm(ActionEvent event) {
         StartFrame.getPrimaryStage().getOnCloseRequest()
                 .handle(
@@ -158,5 +179,26 @@ public class Controller {
                                 WindowEvent.WINDOW_CLOSE_REQUEST
                         )
                 );
+    }
+
+    public void saveInitializeData(ActionEvent event) {
+        if(noStandart==null)
+        {
+            SampleAlert.SaveError();
+            return;
+         }
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
+        if(file != null){
+            fileSave.SaveVariablesToTXT(fileSave.generateDataToTxt(noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC()), file);
+        }
+    }
+
+    public void saveToTXT(ActionEvent event) {
+    }
+
+    public void saveToPDF(ActionEvent event) {
     }
 }

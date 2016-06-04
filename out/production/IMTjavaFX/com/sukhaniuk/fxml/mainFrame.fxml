@@ -20,10 +20,10 @@
             <SeparatorMenuItem mnemonicParsing="false" />
             <Menu mnemonicParsing="false" text="Зберегти відповідь">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="В pdf" />
-                        <MenuItem mnemonicParsing="false" text="В txt" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveToPDF" text="В pdf" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveToTXT" text="В txt" />
                      </items></Menu>
-            <MenuItem mnemonicParsing="false" text="Зберегти поточні значення" />
+            <MenuItem mnemonicParsing="false" onAction="#saveInitializeData" text="Зберегти поточні значення" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#сloseProgramm" text="Вихід" />
           </items>
