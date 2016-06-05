@@ -15,6 +15,7 @@ import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.sukhaniuk.charts.BarChartTmp;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
 import starter.StartFrame;
@@ -68,8 +69,10 @@ public class Controller {
     private ArrayList<IMT> imtNoStandartList;
 
     @FXML
+    private MenuItem Help;
+    @FXML
     private void initialize() {
-
+        Help.setAccelerator( KeyCombination.keyCombination("F1") );
     }
 
     /**
@@ -94,7 +97,7 @@ public class Controller {
             stackedBarChartbarChart = BarChartTmp.generateStackedChart(stackedBarChartbarChart, imtStandartList);
             stackedBarChartbarChartT1 = BarChartTmp.generateBarChart(stackedBarChartbarChartT1, imtStandartList, standart.getX());
         }
-
+        //Изменение графиков и таблицы
         noStandart = new IMTAlgoNoStandart(d, A, h, C, n);
         imtNoStandartList = new ArrayList(noStandart.run());
         if (imtNoStandartList.size() != 0) {
@@ -103,6 +106,7 @@ public class Controller {
             stackedBarChartbarChartNoStandart = BarChartTmp.generateStackedChart(stackedBarChartbarChartNoStandart, imtNoStandartList);
             stackedBarChartbarChartNoStandartT1 = BarChartTmp.generateBarChart(stackedBarChartbarChartNoStandartT1, imtNoStandartList, noStandart.getX());
         }
+        //Изменить линейный график
         lineChart = LineChartTmp.generate(lineChart, standart.getX(), noStandart.getX());
     }
 
@@ -232,5 +236,9 @@ public class Controller {
             PDFSave.generateHTMLTableView(file,imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX(),
                     noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC());
         }
+    }
+
+    public void aboutProgramMenuClick(ActionEvent event) {
+        StartFrame.startHelp();
     }
 }

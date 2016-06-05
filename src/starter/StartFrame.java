@@ -9,9 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class StartFrame extends Application {
@@ -44,6 +46,20 @@ public class StartFrame extends Application {
                 System.exit(0);
             }
         });
+    }
+    public static void startHelp()
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(fxmlLoader.class.getResource("help/helpFrame.fxml"));
+        try {
+            SplitPane root = loader.load();
+            Stage st = new Stage();
+            st.setResizable(false);
+            st.setScene(new Scene(root,600,400));
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public static void newElementAdd()
     {

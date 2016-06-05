@@ -28,9 +28,9 @@
             <MenuItem mnemonicParsing="false" onAction="#сloseProgramm" text="Вихід" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="О программе">
+        <Menu mnemonicParsing="false" text="Про программу">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem fx:id="Help" mnemonicParsing="false" onAction="#aboutProgramMenuClick" text="Справка" />
           </items>
         </Menu>
       </menus>
