@@ -74,4 +74,22 @@ public class IMT {
         int res = Integer.parseInt(result[result.length-1].trim());
         return res;
     }
+    public String formulaAsHtml(ArrayList<String> imt)
+    {
+        String str = "";
+        for (int i = 0 ; i < imt.size();i++)
+        {
+            str += "<p>" + imt.get(i) + "</p>";
+        }
+        return str;
+    }
+    public String JAsHtml(ArrayList<String> imt)
+    {
+        String str = "";
+        for (int i = 0 ; i < imt.size();i++)
+        {
+            str += "<p>" + imt.get(i) + "</p>";
+        }
+        return str;
+    }
 }

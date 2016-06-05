@@ -114,7 +114,7 @@ public class fileSave {
     public static String generateXanswer(int [] x)
     {
         String answ = "";
-        for (int i = 1 ; i < x.length; i++)
+        for (int i = 1 ; i <= x.length; i++)
         {
             answ += "X["+i+"] = "+x[i-1]+" ";
         }
@@ -124,10 +124,10 @@ public class fileSave {
     /**
      * Функция генерации таблицы в html
      */
-    public static String generateHTMLTableView(ArrayList<IMT> imtStandart, ArrayList <IMT> imtNoStandart , int [] xStandart, int [] xNoStandart)
+    public static String generateHTMLTableView(ArrayList<IMT> imtStandart, ArrayList <IMT> imtNoStandart , int [] xStandart, int [] xNoStandart,int[]h, int[]d, int[]A, int[]C)
     {
         String answ = "";
-        HtmlParser.generateTableView(imtStandart,imtNoStandart, xStandart ,xNoStandart);
+
         // step 1 - Создать документ
         Document document = new Document();
         // step 2 - Создать принтврайтер
@@ -143,20 +143,35 @@ public class fileSave {
         }
         // step 3 - открыть документ
         document.open();
-        // step 4 - вставить в документ данные из html
+        document.addAuthor("Шишкін В.І. | Суханюк М.В.");
+        document.addCreator("Задача управління запасами 2016 ІС-33");
+        document.addSubject("Задача управління запасами");
+        document.addTitle("Дякуємо за використання нашого продукту");
+        // step 4 - вставить в документ данные из html обычного алгоритма
         try {
             BaseFont bf = BaseFont.createFont(String.valueOf(DataUpdate.class.getResource("html/arial.ttf")), BaseFont.IDENTITY_H, BaseFont.EMBEDDED); //подключаем файл шрифта, который поддерживает кириллицу
             Font font = new Font(bf);
-            document.add(new Paragraph("Задача управления запасами", font));
+            document.add(new Paragraph("Задача управління запасами", font));
 
+            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView(imtStandart, xStandart,h,d,A,C)).getBytes());
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
-                    DataUpdate.class.getResourceAsStream("html/tableView.html"),DataUpdate.class.getResourceAsStream("html/tableView.css"),Charset.forName("UTF-8"));
+                    htmlDocument,DataUpdate.class.getResourceAsStream("html/tableView.css"));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
             e.printStackTrace();
         }
-        //step 5
+
+        //step 5 - вставить в документ данные из html дополненного алгоритма
+        document.newPage();
+        try {
+            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView(imtNoStandart, xNoStandart,h,d,A,C)).getBytes());
+            XMLWorkerHelper.getInstance().parseXHtml(writer, document,
+                    htmlDocument,DataUpdate.class.getResourceAsStream("html/tableView.css"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //step 6 - закрыть документ
         document.close();
 
         System.out.println( "PDF Created!" );

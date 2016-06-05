@@ -225,6 +225,7 @@ public class Controller {
             SampleAlert.SaveError();
             return;
         }
-        fileSave.generateHTMLTableView(imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX());
+        fileSave.generateHTMLTableView(imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX(),
+                noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC());
     }
 }
