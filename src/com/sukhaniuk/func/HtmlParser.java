@@ -36,7 +36,7 @@ public class HtmlParser {
         }
         //Тег с ид answer для записи ответа
         Element div = htmlFile.getElementById("answer");
-        div.text("\nВідповідь: Мінімальні витрати z = "+imtList.get(imtList.size()-1).getSum()+ "(од. вартості). Об'єми поставок: " + fileSave.generateXanswer(Answer) +"\n");
+        div.text("\nВідповідь: Мінімальні витрати z = "+imtList.get(imtList.size()-1).getSum()+ "(од. вартості). Об'єми поставок: " + TXTSave.generateXanswer(Answer) +"\n");
         //Тег с ид name для записи имени алгоритма
         Element h1 = htmlFile.getElementById("name");
         h1.text("\n Звичайна задача управління запасами\n");

@@ -5,27 +5,22 @@ import com.shyslav.func.IMT;
 import com.shyslav.func.IMTAlgoNoStandart;
 import com.shyslav.func.IMTAlgoStandart;
 import com.sukhaniuk.charts.LineChartTmp;
-import com.sukhaniuk.func.fileSave;
+import com.sukhaniuk.func.PDFSave;
+import com.sukhaniuk.func.TXTSave;
 import com.sukhaniuk.func.readFromFile;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.sukhaniuk.charts.BarChartTmp;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import starter.StartFrame;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Controller {
     //Элементы стандартного алгоритма
@@ -196,7 +191,7 @@ public class Controller {
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
         if(file != null){
-            fileSave.SaveVariablesToTXT(fileSave.generateDataToTxt(noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC()), file);
+            TXTSave.SaveVariablesToTXT(TXTSave.generateDataToTxt(noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC()), file);
         }
     }
 
@@ -215,17 +210,27 @@ public class Controller {
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
         if(file != null){
-            fileSave.SaveVariablesToTXT(fileSave.generateFormulaAnswer(imtStandartList,imtNoStandartList,standart.getH(),standart.getD(),noStandart.getA(),noStandart.getC(),standart.getX(),noStandart.getX()), file);
+            TXTSave.SaveVariablesToTXT(TXTSave.generateFormulaAnswer(imtStandartList,imtNoStandartList,standart.getH(),standart.getD(),noStandart.getA(),noStandart.getC(),standart.getX(),noStandart.getX()), file);
         }
     }
 
+    /**
+     * Функция выбора директории где сохранить пдф
+     * @param event
+     */
     public void saveToPDF(ActionEvent event) {
         if(noStandart==null)
         {
             SampleAlert.SaveError();
             return;
         }
-        fileSave.generateHTMLTableView(imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX(),
-                noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC());
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
+        if(file != null) {
+            PDFSave.generateHTMLTableView(file,imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX(),
+                    noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC());
+        }
     }
 }
