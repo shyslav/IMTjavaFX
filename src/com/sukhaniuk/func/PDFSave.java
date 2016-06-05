@@ -41,9 +41,9 @@ public class PDFSave {
             writer = PdfWriter.getInstance(document, new FileOutputStream(file));
             writer.setLanguage("UTF-8");
         } catch (DocumentException e) {
-            e.printStackTrace();
+            SampleAlert.WriteError(e);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            SampleAlert.FileNotFound(e);
         }
         // step 3 - открыть документ
         document.open();
@@ -61,9 +61,9 @@ public class PDFSave {
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
                     htmlDocument,DataUpdate.class.getResourceAsStream("html/tableView.css"));
         } catch (IOException e) {
-            e.printStackTrace();
+            SampleAlert.FileIO(e);
         } catch (DocumentException e) {
-            e.printStackTrace();
+            SampleAlert.WriteError(e);
         }
 
         //step 5 - вставить в документ данные из html дополненного алгоритма
@@ -73,7 +73,7 @@ public class PDFSave {
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
                     htmlDocument,DataUpdate.class.getResourceAsStream("html/tableView.css"));
         } catch (IOException e) {
-            e.printStackTrace();
+            SampleAlert.FileIO(e);
         }
         //step 6 - закрыть документ
         document.close();

@@ -24,4 +24,24 @@ public class SampleAlert {
         SampleAlert sa = new SampleAlert("Ошибка","Сервер не отвечает, попробуйте позже","Обратитесь к администратору или разработчикам", Alert.AlertType.ERROR);
         System.exit(0);
     }
+    public static void WriteError(Exception e)
+    {
+        SampleAlert sa = new SampleAlert("Ошибка записи","Файл не знайдений",e.toString(), Alert.AlertType.ERROR);
+    }
+    public static void FileNotFound(Exception e)
+    {
+        SampleAlert sa = new SampleAlert("Ошибка чтения","Файл не знайдений",e.toString(), Alert.AlertType.ERROR);
+    }
+    public static void FileIO(Exception e)
+    {
+        SampleAlert sa = new SampleAlert("Ошибка","Вы пытаетесь записать пустые данные",e.toString(), Alert.AlertType.ERROR);
+    }
+    public static void ReadFileErrorAmountVariables()
+    {
+        SampleAlert sa = new SampleAlert("Ошибка","Количество элементов не совпадает, проверьте ваш txt файл","Нажмите F1 для справки", Alert.AlertType.ERROR);
+    }
+    public static void ReadFileStructureError()
+    {
+        SampleAlert sa = new SampleAlert("Ошибка","Ошибка синтаксиса txt файла","Нажмите F1 для справки", Alert.AlertType.ERROR);
+    }
 }

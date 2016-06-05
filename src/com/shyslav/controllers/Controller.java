@@ -7,7 +7,7 @@ import com.shyslav.func.IMTAlgoStandart;
 import com.sukhaniuk.charts.LineChartTmp;
 import com.sukhaniuk.func.PDFSave;
 import com.sukhaniuk.func.TXTSave;
-import com.sukhaniuk.func.readFromFile;
+import com.sukhaniuk.func.ReadFromFile;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -159,10 +159,10 @@ public class Controller {
      */
     public void readFromFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        readFromFile.configureFileChooser(fileChooser, "Обрати файл");
+        ReadFromFile.configureFileChooser(fileChooser, "Обрати файл");
         File file = fileChooser.showOpenDialog(StartFrame.getPrimaryStage());
         if (file != null) {
-            readFromFile.read(file.getPath());
+            ReadFromFile.read(file.getPath());
         }
     }
 
@@ -191,6 +191,7 @@ public class Controller {
             return;
          }
         FileChooser fileChooser = new FileChooser();
+        ReadFromFile.configureFileChooser(fileChooser, "Збереження значень в TXT");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
@@ -210,6 +211,7 @@ public class Controller {
             return;
         }
         FileChooser fileChooser = new FileChooser();
+        ReadFromFile.configureFileChooser(fileChooser, "Збереження в TXT");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
@@ -229,6 +231,7 @@ public class Controller {
             return;
         }
         FileChooser fileChooser = new FileChooser();
+        ReadFromFile.configureFileChooser(fileChooser, "Збереження в PDF");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());

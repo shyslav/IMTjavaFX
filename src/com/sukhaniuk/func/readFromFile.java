@@ -1,5 +1,6 @@
 package com.sukhaniuk.func;
 
+import com.shyslav.controllers.alerts.SampleAlert;
 import javafx.stage.FileChooser;
 import starter.StartFrame;
 
@@ -12,7 +13,7 @@ import java.util.Scanner;
 /**
  * Created by Shyshkin Vladyslav on 02.06.2016.
  */
-public class readFromFile {
+public class ReadFromFile {
     /**
      * Функция генерации настроек fileChooser
      * @param fileChooser - fileChooser к которому приписать настройки
@@ -20,9 +21,9 @@ public class readFromFile {
      */
     public static void configureFileChooser(final FileChooser fileChooser, String title) {
         fileChooser.setTitle(title);
-//        fileChooser.setInitialDirectory(
-//                new File(System.getProperty("user.home"))
-//        );
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
         //добавить розширения допустимых файлов
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("txt", "*.txt"));
@@ -39,11 +40,18 @@ public class readFromFile {
         int [] A = null;
         int [] C = null;
         int [] h = null;
-        readFromFile read = new readFromFile();
+        ReadFromFile read = new ReadFromFile();
         boolean done = true;
         try {
             Scanner scanner = new Scanner(Paths.get(path));
-            int n = Integer.parseInt(scanner.nextLine().trim());
+            int n = 0;
+            try {
+                 n = Integer.parseInt(scanner.nextLine().trim());
+            }catch (Exception ex)
+            {
+                SampleAlert.ReadFileStructureError();
+                return false;
+            }
             d = new int[n];
             A = new int[n];
             h = new int[n];
@@ -76,6 +84,7 @@ public class readFromFile {
             e.printStackTrace();
         }
         if (!done) {
+            SampleAlert.ReadFileErrorAmountVariables();
             return false;
         }else
         {
