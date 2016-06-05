@@ -70,9 +70,10 @@ public class Controller {
 
     @FXML
     private MenuItem Help;
+
     @FXML
     private void initialize() {
-        Help.setAccelerator( KeyCombination.keyCombination("F1") );
+        Help.setAccelerator(KeyCombination.keyCombination("F1"));
     }
 
     /**
@@ -147,6 +148,7 @@ public class Controller {
 
     /**
      * Ивент на нажатие в меня "Ввести значения"
+     *
      * @param event
      */
     public void newMenuItemGenerateDataToIMT(ActionEvent event) {
@@ -155,6 +157,7 @@ public class Controller {
 
     /**
      * Ивен на нажатие в меню "Считать с файла"
+     *
      * @param event
      */
     public void readFromFile(ActionEvent event) {
@@ -168,6 +171,7 @@ public class Controller {
 
     /**
      * Ивент на нажатие в меню "Выход"
+     *
      * @param event
      */
     public void сloseProgramm(ActionEvent event) {
@@ -182,31 +186,31 @@ public class Controller {
 
     /**
      * Функция сохранения данных в тхт
+     *
      * @param event
      */
     public void saveInitializeData(ActionEvent event) {
-        if(noStandart==null)
-        {
+        if (noStandart == null) {
             SampleAlert.SaveError();
             return;
-         }
+        }
         FileChooser fileChooser = new FileChooser();
         ReadFromFile.configureFileChooser(fileChooser, "Збереження значень в TXT");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
-        if(file != null){
-            TXTSave.SaveVariablesToTXT(TXTSave.generateDataToTxt(noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC()), file);
+        if (file != null) {
+            TXTSave.SaveVariablesToTXT(TXTSave.generateDataToTxt(noStandart.getH(), noStandart.getD(), noStandart.getA(), noStandart.getC()), file);
         }
     }
 
     /**
      * Функция сохранения решения в тхт
+     *
      * @param event
      */
     public void saveToTXT(ActionEvent event) {
-        if(noStandart==null)
-        {
+        if (noStandart == null) {
             SampleAlert.SaveError();
             return;
         }
@@ -215,18 +219,18 @@ public class Controller {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
-        if(file != null){
-            TXTSave.SaveVariablesToTXT(TXTSave.generateFormulaAnswer(imtStandartList,imtNoStandartList,standart.getH(),standart.getD(),noStandart.getA(),noStandart.getC(),standart.getX(),noStandart.getX()), file);
+        if (file != null) {
+            TXTSave.SaveVariablesToTXT(TXTSave.generateFormulaAnswer(imtStandartList, imtNoStandartList, standart.getH(), standart.getD(), noStandart.getA(), noStandart.getC(), standart.getX(), noStandart.getX()), file);
         }
     }
 
     /**
      * Функция выбора директории где сохранить пдф
+     *
      * @param event
      */
     public void saveToPDF(ActionEvent event) {
-        if(noStandart==null)
-        {
+        if (noStandart == null) {
             SampleAlert.SaveError();
             return;
         }
@@ -235,9 +239,9 @@ public class Controller {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
-        if(file != null) {
-            PDFSave.generateHTMLTableView(file,imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX(),
-                    noStandart.getH(),noStandart.getD(),noStandart.getA(),noStandart.getC());
+        if (file != null) {
+            PDFSave.generateHTMLTableView(file, imtStandartList, imtNoStandartList, standart.getX(), noStandart.getX(),
+                    noStandart.getH(), noStandart.getD(), noStandart.getA(), noStandart.getC());
         }
     }
 

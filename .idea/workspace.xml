@@ -4,13 +4,8 @@
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java" afterPath="$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java" afterPath="$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sukhaniuk/func/PDFSave.java" afterPath="$PROJECT_DIR$/src/com/sukhaniuk/func/PDFSave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/html/help/about.html" afterPath="$PROJECT_DIR$/src/data/html/help/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/html/help/errors.html" afterPath="$PROJECT_DIR$/src/data/html/help/errors.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/html/help/savePdf.html" afterPath="$PROJECT_DIR$/src/data/html/help/savePdf.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/html/help/saveTxt.html" afterPath="$PROJECT_DIR$/src/data/html/help/saveTxt.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/html/help/saveVariables.html" afterPath="$PROJECT_DIR$/src/data/html/help/saveVariables.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/html/help/startWorking.html" afterPath="$PROJECT_DIR$/src/data/html/help/startWorking.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java" afterPath="$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sukhaniuk/fxml/help/helpFrame.fxml" afterPath="$PROJECT_DIR$/src/com/sukhaniuk/fxml/help/helpFrame.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,18 +70,20 @@
         <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="45" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="45" />
+              <caret line="66" column="56" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadFromFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/func/ReadFromFile.java">
+      <file leaf-file-name="helpController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-              <folding />
+              <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +91,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54989815">
-              <caret line="193" column="41" selection-start-line="193" selection-start-column="21" selection-end-line="193" selection-end-column="41" />
+            <state vertical-scroll-proportion="4.2545824">
+              <caret line="193" column="36" selection-start-line="193" selection-start-column="36" selection-end-line="193" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -148,15 +145,15 @@
         <option value="$PROJECT_DIR$/src/com/sukhaniuk/fxml/help/helpFrame.fxml" />
         <option value="$PROJECT_DIR$/src/data/html/help/Errors.css" />
         <option value="$PROJECT_DIR$/src/starter/StartFrame.java" />
-        <option value="$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java" />
         <option value="$PROJECT_DIR$/src/com/sukhaniuk/func/PDFSave.java" />
         <option value="$PROJECT_DIR$/src/data/html/help/errors.html" />
         <option value="$PROJECT_DIR$/src/data/html/help/saveVariables.html" />
         <option value="$PROJECT_DIR$/src/data/html/help/saveTxt.html" />
         <option value="$PROJECT_DIR$/src/data/html/help/savePdf.html" />
-        <option value="$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java" />
         <option value="$PROJECT_DIR$/src/data/html/help/startWorking.html" />
         <option value="$PROJECT_DIR$/src/data/html/help/about.html" />
+        <option value="$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java" />
+        <option value="$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java" />
         <option value="$PROJECT_DIR$/src/com/sukhaniuk/func/ReadFromFile.java" />
         <option value="$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java" />
       </list>
@@ -1058,16 +1055,16 @@
       <workItem from="1465045779473" duration="6722000" />
       <workItem from="1465056058603" duration="24422000" />
       <workItem from="1465123478434" duration="7281000" />
-      <workItem from="1465131441203" duration="11634000" />
+      <workItem from="1465131441203" duration="11962000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55819000" />
+    <option name="totallyTimeSpent" value="56147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1079,7 +1076,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33204633" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24875" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24875" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947233" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1475,31 +1472,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/fxml/help/helpFrame.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3119266">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/func/PDFSave.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5845214">
-          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1538,14 +1514,6 @@
             <element signature="e#10802#10803#0" expanded="true" />
             <element signature="e#10841#10842#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="45" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1607,18 +1575,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/func/ReadFromFile.java">
+    <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/alerts/SampleAlert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <caret line="66" column="56" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/helpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/func/ReadFromFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45010182">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sukhaniuk/fxml/help/helpFrame.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3119266">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/shyslav/controllers/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54989815">
-          <caret line="193" column="41" selection-start-line="193" selection-start-column="21" selection-end-line="193" selection-end-column="41" />
+        <state vertical-scroll-proportion="4.2545824">
+          <caret line="193" column="36" selection-start-line="193" selection-start-column="36" selection-end-line="193" selection-end-column="36" />
           <folding />
         </state>
       </provider>

@@ -14,22 +14,21 @@ import javafx.scene.web.WebView;
 public class helpController {
     @FXML
     private WebView webView;
+
     @FXML
-    private void initialize()
-    {
+    private void initialize() {
         WebEngine webEngine = webView.getEngine();
         webEngine.load(String.valueOf(DataUpdate.class.getResource("html/help/about.html")));
     }
 
     public void mouseClickedEvent(Event event) {
         Object sourse = event.getSource();
-        if(!(sourse instanceof Button)) {
+        if (!(sourse instanceof Button)) {
             return;
         }
         WebEngine webEngine = webView.getEngine();
         Button btn = (Button) sourse;
-        switch (btn.getId())
-        {
+        switch (btn.getId()) {
             case "about":
                 webEngine.load(String.valueOf(DataUpdate.class.getResource("html/help/about.html")));
                 break;
@@ -49,7 +48,5 @@ public class helpController {
                 webEngine.load(String.valueOf(DataUpdate.class.getResource("html/help/errors.html")));
                 break;
         }
-
-
     }
 }
