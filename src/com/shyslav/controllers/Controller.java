@@ -181,6 +181,10 @@ public class Controller {
                 );
     }
 
+    /**
+     * Функция сохранения данных в тхт
+     * @param event
+     */
     public void saveInitializeData(ActionEvent event) {
         if(noStandart==null)
         {
@@ -196,9 +200,31 @@ public class Controller {
         }
     }
 
+    /**
+     * Функция сохранения решения в тхт
+     * @param event
+     */
     public void saveToTXT(ActionEvent event) {
+        if(noStandart==null)
+        {
+            SampleAlert.SaveError();
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(StartFrame.getPrimaryStage());
+        if(file != null){
+            fileSave.SaveVariablesToTXT(fileSave.generateFormulaAnswer(imtStandartList,imtNoStandartList,standart.getH(),standart.getD(),noStandart.getA(),noStandart.getC(),standart.getX(),noStandart.getX()), file);
+        }
     }
 
     public void saveToPDF(ActionEvent event) {
+        if(noStandart==null)
+        {
+            SampleAlert.SaveError();
+            return;
+        }
+        fileSave.generateHTMLTableView(imtStandartList,imtNoStandartList,standart.getX(),noStandart.getX());
     }
 }

@@ -7,6 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="itextpdf-5.5.9" level="project" />
+    <orderEntry type="library" name="xmlworker-5.5.9" level="project" />
+    <orderEntry type="library" name="jsoup-1.9.2" level="project" />
   </component>
 </module>
-
