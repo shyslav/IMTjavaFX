@@ -1,5 +1,6 @@
 package com.sukhaniuk.func;
 
+import com.shyslav.controllers.alerts.SampleAlert;
 import com.shyslav.func.IMT;
 import data.DataUpdate;
 import org.jsoup.Jsoup;
@@ -25,21 +26,31 @@ public class HtmlParser {
      * @param C - затраты от спроса
      * @return html документ
      */
-    public static Document generateTableView(ArrayList <IMT> imtList ,int [] Answer, int[] h, int[] d, int[] A, int[] C)
+    public static Document generateTableView(String title,ArrayList <IMT> imtList ,int [] Answer, int[] h, int[] d, int[] A, int[] C)
     {
         Document htmlFile = null;
-        File input = new File(DataUpdate.class.getResource("html/tableView.html").getPath());
+        File input = null;
+        String path = new File("src"+File.separator+"data"+File.separator+"html"+File.separator+"tableView.html").getAbsolutePath();
+        try {
+            input = new File(path);
+            //input = new File(DataUpdate.class.getResource("html/tableView.html").getPath());
+        }catch (Exception ex)
+        {
+            SampleAlert.SaveError();
+            System.out.println(ex);
+        }
         try {
             htmlFile = Jsoup.parse(input,"UTF-8");
         } catch (IOException e) {
-            e.printStackTrace();
+            SampleAlert.FileNotFound(e);
+            System.out.println(e);
         }
         //Тег с ид answer для записи ответа
         Element div = htmlFile.getElementById("answer");
         div.text("\nВідповідь: Мінімальні витрати z = "+imtList.get(imtList.size()-1).getSum()+ "(од. вартості). Об'єми поставок: " + TXTSave.generateXanswer(Answer) +"\n");
         //Тег с ид name для записи имени алгоритма
         Element h1 = htmlFile.getElementById("name");
-        h1.text("\n Звичайна задача управління запасами\n");
+        h1.text("\n"+title+"\n");
         //Получить таблицу с ид table
         Element table = htmlFile.getElementById("table");
         //Получить в таблице все элементы по тегу tbody
@@ -59,6 +70,8 @@ public class HtmlParser {
         }
         return htmlFile;
     }
+
+
 
     /**
      * Функция вывода входящего массива

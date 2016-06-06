@@ -57,7 +57,7 @@ public class PDFSave {
             Font font = new Font(bf);
             document.add(new Paragraph("Задача управління запасами", font));
 
-            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView(imtStandart, xStandart,h,d,A,C)).getBytes());
+            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView("Звичайна задача управління запасами",imtStandart, xStandart,h,d,A,C)).getBytes());
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
                     htmlDocument,DataUpdate.class.getResourceAsStream("html/tableView.css"));
         } catch (IOException e) {
@@ -69,7 +69,7 @@ public class PDFSave {
         //step 5 - вставить в документ данные из html дополненного алгоритма
         document.newPage();
         try {
-            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView(imtNoStandart, xNoStandart,h,d,A,C)).getBytes());
+            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView("Ускладнена задача управління запасами",imtNoStandart, xNoStandart,h,d,A,C)).getBytes());
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
                     htmlDocument,DataUpdate.class.getResourceAsStream("html/tableView.css"));
         } catch (IOException e) {
@@ -77,7 +77,7 @@ public class PDFSave {
         }
         //step 6 - закрыть документ
         document.close();
-
+        SampleAlert sa = new SampleAlert("Создание pdf прошло успешно","Файл сохранен","Вы можете его открыть", Alert.AlertType.INFORMATION);
         System.out.println( "PDF Created!" );
     }
 }

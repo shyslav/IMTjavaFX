@@ -23,11 +23,9 @@ public class ReadFromFile {
     public static void configureFileChooser(final FileChooser fileChooser, String title) {
         fileChooser.setTitle(title);
         fileChooser.setInitialDirectory(
-                new File(System.getProperty("user.home"))
+                //new File(System.getProperty("user.home"))
+                new File(new File("").getAbsolutePath())
         );
-        //добавить розширения допустимых файлов
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("txt", "*.txt"));
     }
 
     /**

@@ -163,6 +163,9 @@ public class Controller {
     public void readFromFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         ReadFromFile.configureFileChooser(fileChooser, "Обрати файл");
+        //добавить розширения допустимых файлов
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("txt", "*.txt"));
         File file = fileChooser.showOpenDialog(StartFrame.getPrimaryStage());
         if (file != null) {
             ReadFromFile.read(file.getPath());
