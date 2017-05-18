@@ -1,6 +1,6 @@
 package com.sukhaniuk.func;
 
-import com.shyslav.controllers.alerts.SampleAlert;
+import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
 import com.shyslav.func.IMT;
 import javafx.scene.control.Alert;
 
@@ -26,7 +26,7 @@ public class TXTSave {
             fileWriter.write(content);
             fileWriter.close();
         } catch (IOException ex) {
-            SampleAlert sa = new SampleAlert("Ошибка записи","Файл не удалось записать",ex.toString(), Alert.AlertType.ERROR);
+            JavaFxSimpleAlert sa = new JavaFxSimpleAlert("Ошибка записи","Файл не удалось записать",ex.toString(), Alert.AlertType.ERROR);
         }
     }
 

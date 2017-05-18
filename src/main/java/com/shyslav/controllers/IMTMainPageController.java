@@ -1,6 +1,6 @@
 package com.shyslav.controllers;
 
-import com.shyslav.controllers.alerts.SampleAlert;
+import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
 import com.shyslav.func.IMT;
 import com.shyslav.func.IMTAlgoNoStandart;
 import com.shyslav.func.IMTAlgoStandart;
@@ -23,7 +23,7 @@ import starter.StartFrame;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Controller {
+public class IMTMainPageController {
     //Элементы стандартного алгоритма
 
     @FXML
@@ -194,7 +194,7 @@ public class Controller {
      */
     public void saveInitializeData(ActionEvent event) {
         if (noStandart == null) {
-            SampleAlert.SaveError();
+            JavaFxSimpleAlert.SaveError();
             return;
         }
         FileChooser fileChooser = new FileChooser();
@@ -214,7 +214,7 @@ public class Controller {
      */
     public void saveToTXT(ActionEvent event) {
         if (noStandart == null) {
-            SampleAlert.SaveError();
+            JavaFxSimpleAlert.SaveError();
             return;
         }
         FileChooser fileChooser = new FileChooser();
@@ -234,7 +234,7 @@ public class Controller {
      */
     public void saveToPDF(ActionEvent event) {
         if (noStandart == null) {
-            SampleAlert.SaveError();
+            JavaFxSimpleAlert.SaveError();
             return;
         }
         FileChooser fileChooser = new FileChooser();

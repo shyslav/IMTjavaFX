@@ -9,14 +9,14 @@ import javafx.scene.web.WebView;
 /**
  * Created by Shyshkin Vladyslav on 05.06.2016.
  */
-public class helpController {
+public class IMTHelpPageController {
     @FXML
     private WebView webView;
 
     @FXML
     private void initialize() {
         WebEngine webEngine = webView.getEngine();
-        webEngine.load(String.valueOf(helpController.class.getResource("html/help/about.html")));
+        webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("html/help/about.html")));
     }
 
     public void mouseClickedEvent(Event event) {
@@ -28,22 +28,22 @@ public class helpController {
         Button btn = (Button) sourse;
         switch (btn.getId()) {
             case "about":
-                webEngine.load(String.valueOf(helpController.class.getResource("/data/html/help/about.html")));
+                webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("/data/html/help/about.html")));
                 break;
             case "startWorking":
-                webEngine.load(String.valueOf(helpController.class.getResource("/data/html/help/startWorking.html")));
+                webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("/data/html/help/startWorking.html")));
                 break;
             case "PDFsave":
-                webEngine.load(String.valueOf(helpController.class.getResource("/data/html/help/savePdf.html")));
+                webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("/data/html/help/savePdf.html")));
                 break;
             case "TXTsave":
-                webEngine.load(String.valueOf(helpController.class.getResource("/data/html/help/saveTxt.html")));
+                webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("/data/html/help/saveTxt.html")));
                 break;
             case "VARsave":
-                webEngine.load(String.valueOf(helpController.class.getResource("/data/html/help/saveVariables.html")));
+                webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("/data/html/help/saveVariables.html")));
                 break;
             case "Errors":
-                webEngine.load(String.valueOf(helpController.class.getResource("/data/html/help/errors.html")));
+                webEngine.load(String.valueOf(IMTHelpPageController.class.getResource("/data/html/help/errors.html")));
                 break;
         }
     }

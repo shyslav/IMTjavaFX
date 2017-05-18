@@ -1,6 +1,6 @@
 package com.sukhaniuk.func;
 
-import com.shyslav.controllers.alerts.SampleAlert;
+import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
 import javafx.stage.FileChooser;
 import starter.StartFrame;
 
@@ -48,7 +48,7 @@ public class ReadFromFile {
             try {
                 n = Integer.parseInt(scanner.nextLine().trim());
             } catch (Exception ex) {
-                SampleAlert.ReadFileStructureError();
+                JavaFxSimpleAlert.ReadFileStructureError();
                 return false;
             }
             d = new int[n];
@@ -82,7 +82,7 @@ public class ReadFromFile {
             e.printStackTrace();
         }
         if (!done) {
-            SampleAlert.ReadFileErrorAmountVariables();
+            JavaFxSimpleAlert.ReadFileErrorAmountVariables();
             return false;
         } else {
             StartFrame.controller.dataOutput(h, d, A, C, h.length);

@@ -7,7 +7,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
-import com.shyslav.controllers.alerts.SampleAlert;
+import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
 import com.shyslav.func.IMT;
 import javafx.scene.control.Alert;
 
@@ -40,9 +40,9 @@ public class PDFSave {
             writer = PdfWriter.getInstance(document, new FileOutputStream(file));
             writer.setLanguage("UTF-8");
         } catch (DocumentException e) {
-            SampleAlert.WriteError(e);
+            JavaFxSimpleAlert.WriteError(e);
         } catch (FileNotFoundException e) {
-            SampleAlert.FileNotFound(e);
+            JavaFxSimpleAlert.FileNotFound(e);
         }
         // step 3 - открыть документ
         document.open();
@@ -60,9 +60,9 @@ public class PDFSave {
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
                     htmlDocument, PDFSave.class.getResourceAsStream("/data/html/tableView.css"));
         } catch (IOException e) {
-            SampleAlert.FileIO(e);
+            JavaFxSimpleAlert.FileIO(e);
         } catch (DocumentException e) {
-            SampleAlert.WriteError(e);
+            JavaFxSimpleAlert.WriteError(e);
         }
 
         //step 5 - вставить в документ данные из html дополненного алгоритма
@@ -72,11 +72,11 @@ public class PDFSave {
             XMLWorkerHelper.getInstance().parseXHtml(writer, document,
                     htmlDocument, PDFSave.class.getResourceAsStream("/data/html/tableView.css"));
         } catch (IOException e) {
-            SampleAlert.FileIO(e);
+            JavaFxSimpleAlert.FileIO(e);
         }
         //step 6 - закрыть документ
         document.close();
-        SampleAlert sa = new SampleAlert("Создание pdf прошло успешно", "Файл сохранен", "Вы можете его открыть", Alert.AlertType.INFORMATION);
+        JavaFxSimpleAlert sa = new JavaFxSimpleAlert("Создание pdf прошло успешно", "Файл сохранен", "Вы можете его открыть", Alert.AlertType.INFORMATION);
         System.out.println("PDF Created!");
     }
 }

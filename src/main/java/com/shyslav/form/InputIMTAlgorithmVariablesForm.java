@@ -1,6 +1,6 @@
 package com.shyslav.form;
 
-import com.shyslav.controllers.alerts.SampleAlert;
+import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -10,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -20,16 +18,13 @@ import javafx.stage.Stage;
 import starter.StartFrame;
 
 import java.awt.*;
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
- * Created by Shyshkin Vladyslav on 01.06.2016.
+ * @author Shyshkin Vladyslav on 01.06.2016.
  */
-public class newElementForm {
+public class InputIMTAlgorithmVariablesForm {
     private GridPane gridOfMassive;
     private Stage primaryStage;
     Stage newElementStage = new Stage();
@@ -41,7 +36,7 @@ public class newElementForm {
     private Map<Integer, TextField> valuesD = new HashMap();
     int n;
 
-    public newElementForm(String title, Stage stag) {
+    public InputIMTAlgorithmVariablesForm(String title, Stage stag) {
         this.title = title;
         this.primaryStage = stag;
 
@@ -196,7 +191,7 @@ public class newElementForm {
                 //проверка на заполненность всех данных
                 if(!checkAnswer())
                 {
-                    SampleAlert.ValuesError();
+                    JavaFxSimpleAlert.ValuesError();
                 }else
                 {
                     //генерировать по заданным числам ответ

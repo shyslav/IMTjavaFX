@@ -1,7 +1,7 @@
 package starter;
 
-import com.shyslav.controllers.Controller;
-import com.shyslav.form.newElementForm;
+import com.shyslav.controllers.IMTMainPageController;
+import com.shyslav.form.InputIMTAlgorithmVariablesForm;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 public class StartFrame extends Application {
     private static Stage primaryStage;
-    public static Controller controller;
+    public static IMTMainPageController controller;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -62,7 +62,7 @@ public class StartFrame extends Application {
     }
 
     public static void newElementAdd() {
-        newElementForm newElement = new newElementForm("Ввести данні", primaryStage);
+        InputIMTAlgorithmVariablesForm newElement = new InputIMTAlgorithmVariablesForm("Ввести данні", primaryStage);
     }
 
     public static Stage getPrimaryStage() {

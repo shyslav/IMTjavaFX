@@ -1,6 +1,6 @@
 package com.sukhaniuk.func;
 
-import com.shyslav.controllers.alerts.SampleAlert;
+import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
 import com.shyslav.func.IMT;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,7 +32,7 @@ public class HtmlParser {
         try {
             htmlFile = Jsoup.parse(input, "UTF-8");
         } catch (IOException e) {
-            SampleAlert.FileNotFound(e);
+            JavaFxSimpleAlert.FileNotFound(e);
         }
         //Тег с ид answer для записи ответа
         Element div = htmlFile.getElementById("answer");
