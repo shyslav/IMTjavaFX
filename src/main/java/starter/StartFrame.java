@@ -23,13 +23,18 @@ public class StartFrame extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         handlerExit();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(StartFrame.class.getResource("/fxml/mainframe.fxml"));
+        FXMLLoader loader = loadIMTmainFrame();
         VBox root = loader.load();
         primaryStage.setTitle("Задача Управления Запасами");
         primaryStage.setScene(new Scene(root, 640, 400));
         primaryStage.show();
         controller = loader.getController();
+    }
+
+    public static FXMLLoader loadIMTmainFrame() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(StartFrame.class.getResource("/fxml/mainframe.fxml"));
+        return loader;
     }
 
     private void handlerExit() {
