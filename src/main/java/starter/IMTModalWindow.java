@@ -52,6 +52,8 @@ public class IMTModalWindow {
         VBox vBox = loader.load();
         StartFrame.controller = loader.getController();
 
+        StartFrame.controller.initializeArrayOfTabs(valueH, valuesD, valueA, valueC, n);
+
         //show scene
         Scene scene = new Scene(vBox);
         stage.initModality(Modality.WINDOW_MODAL);

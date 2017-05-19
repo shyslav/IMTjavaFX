@@ -15,22 +15,36 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by Shyshkin Vladyslav on 05.06.2016.
+ * @author Shyshkin Vladyslav on 05.06.2016.
  */
 public class PDFSave {
     /**
      * Функция генерации таблицы в html и записи ее
      *
-     * @param imtStandart   - лист стандартного ЗУЗ
-     * @param imtNoStandart - лист не стандартного ЗУЗ
-     * @param xStandart     - массив ответов стандартного ЗУЗ
-     * @param xNoStandart   - массив ответов не стандартного ЗУЗ
-     * @param h             - затраты на хранение
-     * @param d             - спрос
-     * @param A             - затраты на доставку
-     * @param C             - затраты от спроса
+     * @param imtAnswerArray - лист стандартного ЗУЗ
+     * @param X              - массив ответов стандартного ЗУЗ
+     * @param h              - затраты на хранение
+     * @param d              - спрос
+     * @param A              - затраты на доставку
+     * @param C              - затраты от спроса
      */
-    public static void generateHTMLTableView(File file, ArrayList<IMT> imtStandart, ArrayList<IMT> imtNoStandart, int[] xStandart, int[] xNoStandart, int[] h, int[] d, int[] A, int[] C) {
+    public static ByteArrayInputStream generateHTMLTableView(ArrayList<IMT> imtAnswerArray, int[] X, int[] h, int[] d, int[] A, int[] C) {
+        byte[] html;
+        if (C == null) {
+            html = String.valueOf(HtmlParser.generateTableView("Звичайна задача управління запасами", imtAnswerArray, X, h, d, A, C)).getBytes();
+        } else {
+            html = String.valueOf(HtmlParser.generateTableView("Ускладнена задача управління запасами", imtAnswerArray, X, h, d, A, C)).getBytes();
+        }
+        return new ByteArrayInputStream(html);
+    }
+
+    /**
+     * Write imt to pdf file
+     *
+     * @param inputStreams input streams
+     * @param file         file to write
+     */
+    public static void writeIMTtoPDFFile(ArrayList<ByteArrayInputStream> inputStreams, File file) {
         // step 1 - Создать документ
         Document document = new Document();
         // step 2 - Создать принтврайтер
@@ -52,31 +66,22 @@ public class PDFSave {
         document.addTitle("Дякуємо за використання нашого продукту");
         // step 4 - вставить в документ данные из html обычного алгоритма
         try {
-            BaseFont bf = BaseFont.createFont(String.valueOf(PDFSave.class.getResource("/data/html/arial.ttf")), BaseFont.IDENTITY_H, BaseFont.EMBEDDED); //подключаем файл шрифта, который поддерживает кириллицу
-            Font font = new Font(bf);
-            document.add(new Paragraph("Задача управління запасами", font));
-
-            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView("Звичайна задача управління запасами", imtStandart, xStandart, h, d, A, C)).getBytes());
-            XMLWorkerHelper.getInstance().parseXHtml(writer, document,
-                    htmlDocument, PDFSave.class.getResourceAsStream("/data/html/tableView.css"));
+            for (ByteArrayInputStream inputStream : inputStreams) {
+                BaseFont bf = BaseFont.createFont(String.valueOf(PDFSave.class.getResource("/data/html/arial.ttf")), BaseFont.IDENTITY_H, BaseFont.EMBEDDED); //подключаем файл шрифта, который поддерживает кириллицу
+                Font font = new Font(bf);
+                document.add(new Paragraph("Задача управління запасами", font));
+                XMLWorkerHelper.getInstance().parseXHtml(writer, document,
+                        inputStream, PDFSave.class.getResourceAsStream("/data/html/tableView.css"));
+                document.newPage();
+            }
+            document.setPageCount(document.getPageNumber() - 1);
         } catch (IOException e) {
             JavaFxSimpleAlert.FileIO(e);
         } catch (DocumentException e) {
             JavaFxSimpleAlert.WriteError(e);
+        } finally {
+            document.close();
         }
-
-        //step 5 - вставить в документ данные из html дополненного алгоритма
-        document.newPage();
-        try {
-            ByteArrayInputStream htmlDocument = new ByteArrayInputStream(String.valueOf(HtmlParser.generateTableView("Ускладнена задача управління запасами", imtNoStandart, xNoStandart, h, d, A, C)).getBytes());
-            XMLWorkerHelper.getInstance().parseXHtml(writer, document,
-                    htmlDocument, PDFSave.class.getResourceAsStream("/data/html/tableView.css"));
-        } catch (IOException e) {
-            JavaFxSimpleAlert.FileIO(e);
-        }
-        //step 6 - закрыть документ
-        document.close();
-        JavaFxSimpleAlert sa = new JavaFxSimpleAlert("Создание pdf прошло успешно", "Файл сохранен", "Вы можете его открыть", Alert.AlertType.INFORMATION);
-        System.out.println("PDF Created!");
+        new JavaFxSimpleAlert("Создание pdf прошло успешно", "Файл сохранен", "Вы можете его открыть", Alert.AlertType.INFORMATION);
     }
 }

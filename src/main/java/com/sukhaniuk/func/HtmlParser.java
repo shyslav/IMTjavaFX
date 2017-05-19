@@ -76,7 +76,9 @@ public class HtmlParser {
         answer += "<p>d:" + generateMass(d) + "</p>";
         answer += "<p>h:" + generateMass(h) + "</p>";
         answer += "<p>A:" + generateMass(A) + "</p>";
-        answer += "<p>C:" + generateMass(C) + "</p>";
+        if (C != null) {
+            answer += "<p>C:" + generateMass(C) + "</p>";
+        }
         return answer;
     }
 
