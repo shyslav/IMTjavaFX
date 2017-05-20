@@ -1,6 +1,6 @@
 package starter;
 
-import appmodels.IMTDataList;
+import com.shyslav.models.IMTRequestList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -17,42 +17,19 @@ import static starter.StartFrame.loadIMTmainFrame;
 public class IMTModalWindow {
     private final Stage stage;
     private final Stage primaryStage;
-    private final IMTDataList dataList;
+    private final IMTRequestList requestList;
 
-    private final int h;
-    private final int a;
-
-    public IMTModalWindow(Stage primaryStage, IMTDataList dataList, int h, int a) throws IOException {
+    public IMTModalWindow(Stage primaryStage, IMTRequestList requestList) throws IOException {
         this.primaryStage = primaryStage;
         this.stage = new Stage();
-        this.dataList = dataList;
-        this.a = a;
-        this.h = h;
+        this.requestList = requestList;
         start();
     }
 
     private void start() throws IOException {
-        int n = 7;
-        int[] valuesD = new int[n];
-        for (int i = 0; i < dataList.size(); i++) {
-            valuesD[i] = dataList.get(0).getCount();
-        }
-        int[] valueH = new int[n];
-        for (int i = 0; i < n; i++) {
-            valueH[i] = h;
-        }
-        int[] valueA = new int[n];
-        for (int i = 0; i < n; i++) {
-            valueA[i] = a;
-        }
-
-        int[] valueC = new int[n];
-
         FXMLLoader loader = loadIMTmainFrame();
         VBox vBox = loader.load();
         StartFrame.controller = loader.getController();
-
-        StartFrame.controller.initializeArrayOfTabs(valueH, valuesD, valueA, valueC, n);
 
         //show scene
         Scene scene = new Scene(vBox);
@@ -63,7 +40,6 @@ public class IMTModalWindow {
         stage.setScene(scene);
         stage.show();
 
-        StartFrame.controller.dataOutput(valueH, valuesD, valueA, valueC, n);
-
+        StartFrame.controller.initializeArrayOfTabs(requestList);
     }
 }

@@ -187,7 +187,6 @@ public class InputIMTAlgorithmVariablesForm {
             if (!checkAnswer()) {
                 JavaFxSimpleAlert.ValuesError();
             } else {
-                StartFrame.controller.setInitializeArray(false);
                 //генерировать по заданным числам ответ
                 StartFrame.controller.dataOutput(MapToMassive(valuesH), MapToMassive(valuesD), MapToMassive(valuesA), MapToMassive(valuesC), n);
                 //закрыть фрейм

@@ -1,6 +1,8 @@
 package com.shyslav.controllers;
 
 import com.shyslav.controllers.alerts.JavaFxSimpleAlert;
+import com.shyslav.models.IMTRequest;
+import com.shyslav.models.IMTRequestList;
 import com.sukhaniuk.func.PDFSave;
 import com.sukhaniuk.func.ReadFromFile;
 import com.sukhaniuk.func.TXTSave;
@@ -26,7 +28,6 @@ public class IMTMainPageController {
     @FXML
     private MenuItem Help;
 
-    private boolean initializeArray = false;
     private final ArrayList<IMTTabController> controllers = new ArrayList<>();
 
     @FXML
@@ -39,14 +40,14 @@ public class IMTMainPageController {
     }
 
     /**
-     * Initialize array of tabs
+     * Initialize array of tabs for request list
      */
-    public void initializeArrayOfTabs(int[] h, int[] d, int[] A, int[] C, int n) {
-        initializeArray = true;
+    public void initializeArrayOfTabs(IMTRequestList requestList) {
         IMTTabPane.getTabs().clear();
         controllers.clear();
-        for (int i = 0; i < n; i++) {
-            loadTab("Tab " + i);
+        for (IMTRequest request : requestList) {
+            IMTTabController controller = loadTab(request.getDishName());
+            controller.dataOutput(request.getH(), request.getD(), request.getA(), request.getN());
         }
     }
 
@@ -55,7 +56,7 @@ public class IMTMainPageController {
      *
      * @param titleName tab title
      */
-    private void loadTab(String titleName) {
+    private IMTTabController loadTab(String titleName) {
         final Tab tab = new Tab(titleName);
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -65,10 +66,12 @@ public class IMTMainPageController {
             tab.setContent(anchorPane);
             controllers.add(controller);
             IMTTabPane.getTabs().add(tab);
+            return controller;
         } catch (IOException e) {
             System.out.println("Unable to load resource " + e);
             System.exit(-1);
         }
+        return null;
     }
 
     /**
@@ -81,20 +84,9 @@ public class IMTMainPageController {
      * @param n - количество элементов в массиве
      */
     public void dataOutput(int[] h, int[] d, int[] A, int[] C, int n) {
-        clearDataStackedBarChart();
-        if (!initializeArray) {
-            initialize();
-            controllers.get(0).dataOutput(h, d, A, n);
-            controllers.get(1).dataOutput(h, d, A, C, n);
-        } else {
-            for (IMTTabController controller : controllers) {
-                if (C == null) {
-                    controller.dataOutput(h, d, A, n);
-                } else {
-                    controller.dataOutput(h, d, A, C, n);
-                }
-            }
-        }
+        initialize();
+        controllers.get(0).dataOutput(h, d, A, n);
+        controllers.get(1).dataOutput(h, d, A, C, n);
     }
 
     /**
@@ -232,10 +224,5 @@ public class IMTMainPageController {
 
     public void aboutProgramMenuClick(ActionEvent event) {
         StartFrame.startHelp();
-    }
-
-
-    public void setInitializeArray(boolean initializeArray) {
-        this.initializeArray = initializeArray;
     }
 }
