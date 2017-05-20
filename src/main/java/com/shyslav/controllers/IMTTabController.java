@@ -34,10 +34,11 @@ public class IMTTabController {
     @FXML
     private StackedBarChart stackedBarChartbarChartT1;
 
+    private String tabName;
+
     private IMTAlgoStandart standart;
     private IMTAlgoNoStandart noStandart;
     private ArrayList<IMT> imtArrayList;
-
 
     /**
      * Calc by standard algorithm
@@ -112,5 +113,14 @@ public class IMTTabController {
 
     public ArrayList<IMT> getImtArrayList() {
         return imtArrayList;
+    }
+
+
+    public void setTabName(String tabName) {
+        this.tabName = tabName;
+    }
+
+    public String getTabName() {
+        return tabName;
     }
 }

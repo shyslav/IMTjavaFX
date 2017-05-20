@@ -28,12 +28,12 @@ public class PDFSave {
      * @param A              - затраты на доставку
      * @param C              - затраты от спроса
      */
-    public static ByteArrayInputStream generateHTMLTableView(ArrayList<IMT> imtAnswerArray, int[] X, int[] h, int[] d, int[] A, int[] C) {
+    public static ByteArrayInputStream generateHTMLTableView(ArrayList<IMT> imtAnswerArray, int[] X, int[] h, int[] d, int[] A, int[] C, String name) {
         byte[] html;
         if (C == null) {
-            html = String.valueOf(HtmlParser.generateTableView("Звичайна задача управління запасами", imtAnswerArray, X, h, d, A, C)).getBytes();
+            html = String.valueOf(HtmlParser.generateTableView(name, imtAnswerArray, X, h, d, A, C)).getBytes();
         } else {
-            html = String.valueOf(HtmlParser.generateTableView("Ускладнена задача управління запасами", imtAnswerArray, X, h, d, A, C)).getBytes();
+            html = String.valueOf(HtmlParser.generateTableView(name, imtAnswerArray, X, h, d, A, C)).getBytes();
         }
         return new ByteArrayInputStream(html);
     }

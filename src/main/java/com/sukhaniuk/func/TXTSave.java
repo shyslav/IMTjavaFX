@@ -21,12 +21,12 @@ public class TXTSave {
      */
     public static void SaveVariablesToTXT(String content, File file) {
         try {
-            FileWriter fileWriter = null;
+            FileWriter fileWriter;
             fileWriter = new FileWriter(file);
             fileWriter.write(content);
             fileWriter.close();
         } catch (IOException ex) {
-            JavaFxSimpleAlert sa = new JavaFxSimpleAlert("Ошибка записи", "Файл не удалось записать", ex.toString(), Alert.AlertType.ERROR);
+            new JavaFxSimpleAlert("Ошибка записи", "Файл не удалось записать", ex.toString(), Alert.AlertType.ERROR);
         }
     }
 
@@ -41,9 +41,9 @@ public class TXTSave {
      * @param X              - массив ответов усложненного ЗУЗ
      * @return - строка для записи в тхт
      */
-    public static String generateFormulaAnswer(ArrayList<IMT> imtAnswerArray, int[] h, int[] d, int[] A, int[] C, int[] X) {
+    public static String generateFormulaAnswer(ArrayList<IMT> imtAnswerArray, int[] h, int[] d, int[] A, int[] C, int[] X, String name) {
         StringBuilder answer = new StringBuilder();
-        String incomeData = generateDataToTxt(h, d, A, C);
+        String incomeData = generateDataToTxt(h, d, A, C, name);
         answer.append("\n Початкові значення: \n").append(incomeData);
         if (C == null) {
             answer.append("\n Задача управління запасами \n\n");
@@ -72,8 +72,8 @@ public class TXTSave {
      * @param C - затраты от спроса
      * @return - строка входящего массива
      */
-    public static String generateDataToTxt(int[] h, int[] d, int[] A, int[] C) {
-        String answer = "";
+    public static String generateDataToTxt(int[] h, int[] d, int[] A, int[] C, String name) {
+        String answer = name + "\n";
         answer += h.length + "\n";
         answer += "d:" + generateMass(d) + "\n";
         answer += "h:" + generateMass(h) + "\n";

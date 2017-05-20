@@ -35,7 +35,7 @@ public class IMTMainPageController {
         IMTTabPane.getTabs().clear();
         controllers.clear();
         loadTab("Задача управління запасами");
-        loadTab("Ускладнена задача управління запасам");
+        loadTab("Ускладнена задача управління запасами");
         Help.setAccelerator(KeyCombination.keyCombination("F1"));
     }
 
@@ -64,6 +64,7 @@ public class IMTMainPageController {
             AnchorPane anchorPane = loader.load();
             IMTTabController controller = loader.getController();
             tab.setContent(anchorPane);
+            controller.setTabName(titleName);
             controllers.add(controller);
             IMTTabPane.getTabs().add(tab);
             return controller;
@@ -153,10 +154,20 @@ public class IMTMainPageController {
         StringBuilder sb = new StringBuilder();
         for (IMTTabController controller : controllers) {
             if (controller.getStandart() != null) {
-                String s = TXTSave.generateDataToTxt(controller.getStandart().getH(), controller.getStandart().getD(), controller.getStandart().getA(), null);
+                String s = TXTSave.generateDataToTxt(
+                        controller.getStandart().getH(),
+                        controller.getStandart().getD(),
+                        controller.getStandart().getA(),
+                        null,
+                        controller.getTabName());
                 sb.append(s);
             } else if (controller.getNoStandart() != null) {
-                String s = TXTSave.generateDataToTxt(controller.getNoStandart().getH(), controller.getNoStandart().getD(), controller.getNoStandart().getA(), controller.getNoStandart().getC());
+                String s = TXTSave.generateDataToTxt(
+                        controller.getNoStandart().getH(),
+                        controller.getNoStandart().getD(),
+                        controller.getNoStandart().getA(),
+                        controller.getNoStandart().getC(),
+                        controller.getTabName());
                 sb.append(s);
             } else {
                 JavaFxSimpleAlert.SaveError();
@@ -181,10 +192,24 @@ public class IMTMainPageController {
         StringBuilder sb = new StringBuilder();
         for (IMTTabController controller : controllers) {
             if (controller.getStandart() != null) {
-                String s = TXTSave.generateFormulaAnswer(controller.getImtArrayList(), controller.getStandart().getH(), controller.getStandart().getD(), controller.getStandart().getA(), null, controller.getStandart().getX());
+                String s = TXTSave.generateFormulaAnswer(
+                        controller.getImtArrayList(),
+                        controller.getStandart().getH(),
+                        controller.getStandart().getD(),
+                        controller.getStandart().getA(),
+                        null,
+                        controller.getStandart().getX(),
+                        controller.getTabName());
                 sb.append(s);
             } else if (controller.getNoStandart() != null) {
-                String s = TXTSave.generateFormulaAnswer(controller.getImtArrayList(), controller.getNoStandart().getH(), controller.getNoStandart().getD(), controller.getNoStandart().getA(), controller.getNoStandart().getC(), controller.getNoStandart().getX());
+                String s = TXTSave.generateFormulaAnswer(
+                        controller.getImtArrayList(),
+                        controller.getNoStandart().getH(),
+                        controller.getNoStandart().getD(),
+                        controller.getNoStandart().getA(),
+                        controller.getNoStandart().getC(),
+                        controller.getNoStandart().getX(),
+                        controller.getTabName());
                 sb.append(s);
             } else {
                 JavaFxSimpleAlert.SaveError();
@@ -208,12 +233,24 @@ public class IMTMainPageController {
         ArrayList<ByteArrayInputStream> inputStreams = new ArrayList<>();
         for (IMTTabController controller : controllers) {
             if (controller.getStandart() != null) {
-                ByteArrayInputStream byteArrayInputStream = PDFSave.generateHTMLTableView(controller.getImtArrayList(), controller.getStandart().getX(),
-                        controller.getStandart().getH(), controller.getStandart().getD(), controller.getStandart().getA(), null);
+                ByteArrayInputStream byteArrayInputStream = PDFSave.generateHTMLTableView(
+                        controller.getImtArrayList(),
+                        controller.getStandart().getX(),
+                        controller.getStandart().getH(),
+                        controller.getStandart().getD(),
+                        controller.getStandart().getA(),
+                        null,
+                        controller.getTabName());
                 inputStreams.add(byteArrayInputStream);
             } else if (controller.getNoStandart() != null) {
-                ByteArrayInputStream byteArrayInputStream = PDFSave.generateHTMLTableView(controller.getImtArrayList(), controller.getNoStandart().getX(),
-                        controller.getNoStandart().getH(), controller.getNoStandart().getD(), controller.getNoStandart().getA(), controller.getNoStandart().getC());
+                ByteArrayInputStream byteArrayInputStream = PDFSave.generateHTMLTableView(
+                        controller.getImtArrayList(),
+                        controller.getNoStandart().getX(),
+                        controller.getNoStandart().getH(),
+                        controller.getNoStandart().getD(),
+                        controller.getNoStandart().getA(),
+                        controller.getNoStandart().getC(),
+                        controller.getTabName());
                 inputStreams.add(byteArrayInputStream);
             } else {
                 JavaFxSimpleAlert.SaveError();

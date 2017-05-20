@@ -3,7 +3,7 @@ package com.shyslav.func;
 import java.util.ArrayList;
 
 /**
- * Created by Shyshkin Vladyslav on 29.05.2016.
+ * @author Shyshkin Vladyslav on 29.05.2016.
  */
 public class IMT {
     private int k;
