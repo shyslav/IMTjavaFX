@@ -29,7 +29,6 @@ public class StartFrame extends Application {
         primaryStage.setScene(new Scene(root, 640, 400));
         primaryStage.show();
         controller = loader.getController();
-        controller.initializeArrayOfTabs(null, null, null, null, 5);
     }
 
     public static FXMLLoader loadIMTmainFrame() {

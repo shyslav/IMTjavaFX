@@ -85,6 +85,7 @@ public class ReadFromFile {
             JavaFxSimpleAlert.ReadFileErrorAmountVariables();
             return false;
         } else {
+            StartFrame.controller.setInitializeArray(false);
             StartFrame.controller.dataOutput(h, d, A, C, h.length);
         }
         return true;

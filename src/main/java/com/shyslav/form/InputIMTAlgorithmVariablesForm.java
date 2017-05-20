@@ -109,15 +109,13 @@ public class InputIMTAlgorithmVariablesForm {
                             root.setCenter(gridOfMassive);
                             field.setStyle("-fx-border-color: green");
                         } else {
-                            if(gridOfMassive!=null)
-                            {
+                            if (gridOfMassive != null) {
                                 gridOfMassive.setVisible(false);
                             }
                             field.setStyle("-fx-border-color: red");
                         }
                     } else {
-                        if(gridOfMassive!=null)
-                        {
+                        if (gridOfMassive != null) {
                             gridOfMassive.setVisible(false);
                         }
                         field.setStyle("-fx-border-color: red");
@@ -158,8 +156,7 @@ public class InputIMTAlgorithmVariablesForm {
     }
 
     private GridPane generateDataGrid() {
-        if(n<=3)
-        {
+        if (n <= 3) {
             return null;
         }
         GridPane gridpane = new GridPane();
@@ -185,20 +182,16 @@ public class InputIMTAlgorithmVariablesForm {
         GridPane.setHalignment(saveButt, HPos.RIGHT);
 
         // Ивент на нажатие кнопки решения
-        saveButt.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //проверка на заполненность всех данных
-                if(!checkAnswer())
-                {
-                    JavaFxSimpleAlert.ValuesError();
-                }else
-                {
-                    //генерировать по заданным числам ответ
-                    StartFrame.controller.dataOutput(MapToMassive(valuesH),MapToMassive(valuesD),MapToMassive(valuesA),MapToMassive(valuesC),n);
-                    //закрыть фрейм
-                    WindowsClose();
-                }
+        saveButt.setOnMouseClicked(event -> {
+            //проверка на заполненность всех данных
+            if (!checkAnswer()) {
+                JavaFxSimpleAlert.ValuesError();
+            } else {
+                StartFrame.controller.setInitializeArray(false);
+                //генерировать по заданным числам ответ
+                StartFrame.controller.dataOutput(MapToMassive(valuesH), MapToMassive(valuesD), MapToMassive(valuesA), MapToMassive(valuesC), n);
+                //закрыть фрейм
+                WindowsClose();
             }
         });
         //добавить в ячейку [4,1] кнопку
@@ -208,10 +201,11 @@ public class InputIMTAlgorithmVariablesForm {
 
     /**
      * Функция генерации hbox
+     *
      * @param index - индекс ячейки в которую производить вставку
-     * @param pane - грид в который производится вставка
+     * @param pane  - грид в который производится вставка
      * @param title - навзвание поля
-     * @param map - карта в которую производится запись текстового поля
+     * @param map   - карта в которую производится запись текстового поля
      */
     private void generateHbox(int index, GridPane pane, String title, Map<Integer, TextField> map) {
         HBox hb = new HBox();
@@ -233,48 +227,38 @@ public class InputIMTAlgorithmVariablesForm {
 
     /**
      * Инент на внесение цифры в тектовое поле, если не верно цвет красный, проверяет максимальное к-во символов в тектовом поле
-     * @param field - тектовое поле
+     *
+     * @param field     - тектовое поле
      * @param maxLength - максимальная длина текстового поля
      */
     private void addTextLimiter(final TextField field, final int maxLength) {
-        field.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
-                if (!isInteger(field.getText())) {
-                    field.setStyle("-fx-border-color: red");
-                }else
-                {
-                    field.setStyle("-fx-border-color: green");
-                }
-                if (field.getText().length() > maxLength) {
-                    String s = field.getText().substring(0, maxLength);
-                    field.setText(s);
-                }
+        field.textProperty().addListener((ov, oldValue, newValue) -> {
+            if (!isInteger(field.getText())) {
+                field.setStyle("-fx-border-color: red");
+            } else {
+                field.setStyle("-fx-border-color: green");
+            }
+            if (field.getText().length() > maxLength) {
+                String s = field.getText().substring(0, maxLength);
+                field.setText(s);
             }
         });
     }
 
     /**
      * Проверка на заполнение всех полей
+     *
      * @return результат проверки
      */
-    private boolean checkAnswer()
-    {
-        for (int i = 0 ; i < n; i++)
-        {
-            if(valuesA.get(i).getStyle().contains("red") || valuesA.get(i).getBorder()==null)
-            {
+    private boolean checkAnswer() {
+        for (int i = 0; i < n; i++) {
+            if (valuesA.get(i).getStyle().contains("red") || valuesA.get(i).getBorder() == null) {
                 return false;
-            }
-            else if (valuesC.get(i).getStyle().contains("red") || valuesC.get(i).getBorder()==null) {
+            } else if (valuesC.get(i).getStyle().contains("red") || valuesC.get(i).getBorder() == null) {
                 return false;
-            }
-            else if(valuesD.get(i).getStyle().contains("red") || valuesD.get(i).getBorder()==null)
-            {
+            } else if (valuesD.get(i).getStyle().contains("red") || valuesD.get(i).getBorder() == null) {
                 return false;
-            }
-            else if(valuesH.get(i).getStyle().contains("red") || valuesH.get(i).getBorder()==null)
-            {
+            } else if (valuesH.get(i).getStyle().contains("red") || valuesH.get(i).getBorder() == null) {
                 return false;
             }
         }
@@ -283,14 +267,13 @@ public class InputIMTAlgorithmVariablesForm {
 
     /**
      * Карта в массив
+     *
      * @param map карта для преобразования
      * @return массив
      */
-    public int[] MapToMassive(Map<Integer,TextField> map)
-    {
-        int [] mas = new int [map.size()];
-        for (int i = 0; i<map.size();i++)
-        {
+    public int[] MapToMassive(Map<Integer, TextField> map) {
+        int[] mas = new int[map.size()];
+        for (int i = 0; i < map.size(); i++) {
             mas[i] = Integer.parseInt(map.get(i).getText().trim());
         }
         return mas;

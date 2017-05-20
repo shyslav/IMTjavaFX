@@ -6,46 +6,69 @@ import com.sukhaniuk.func.ReadFromFile;
 import com.sukhaniuk.func.TXTSave;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
 import starter.StartFrame;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class IMTMainPageController {
     public TabPane IMTTabPane;
-
     @FXML
     private MenuItem Help;
 
-    @FXML
-    private IMTTabController IMTStandardTabController;
-
-    @FXML
-    private IMTTabController IMTNoStandardTabController;
-
+    private boolean initializeArray = false;
     private final ArrayList<IMTTabController> controllers = new ArrayList<>();
 
     @FXML
     private void initialize() {
-        controllers.add(IMTStandardTabController);
-        controllers.add(IMTNoStandardTabController);
+        IMTTabPane.getTabs().clear();
+        controllers.clear();
+        loadTab("Задача управління запасами");
+        loadTab("Ускладнена задача управління запасам");
         Help.setAccelerator(KeyCombination.keyCombination("F1"));
     }
 
+    /**
+     * Initialize array of tabs
+     */
     public void initializeArrayOfTabs(int[] h, int[] d, int[] A, int[] C, int n) {
-//        IMTTabPane.getTabs().clear();
-//        for (int i = 0; i < n; i++) {
-//            final Tab tab = new Tab("Tab ");
-//            IMTTabPane.getTabs().add(tab);
-//        }
+        initializeArray = true;
+        IMTTabPane.getTabs().clear();
+        controllers.clear();
+        for (int i = 0; i < n; i++) {
+            loadTab("Tab " + i);
+        }
+    }
+
+    /**
+     * Load new imt tab
+     *
+     * @param titleName tab title
+     */
+    private void loadTab(String titleName) {
+        final Tab tab = new Tab(titleName);
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(IMTMainPageController.class.getResource("/fxml/parts/imttab.fxml"));
+            AnchorPane anchorPane = loader.load();
+            IMTTabController controller = loader.getController();
+            tab.setContent(anchorPane);
+            controllers.add(controller);
+            IMTTabPane.getTabs().add(tab);
+        } catch (IOException e) {
+            System.out.println("Unable to load resource " + e);
+            System.exit(-1);
+        }
     }
 
     /**
@@ -59,16 +82,28 @@ public class IMTMainPageController {
      */
     public void dataOutput(int[] h, int[] d, int[] A, int[] C, int n) {
         clearDataStackedBarChart();
-        IMTStandardTabController.dataOutput(h, d, A, n);
-        IMTNoStandardTabController.dataOutput(h, d, A, C, n);
+        if (!initializeArray) {
+            initialize();
+            controllers.get(0).dataOutput(h, d, A, n);
+            controllers.get(1).dataOutput(h, d, A, C, n);
+        } else {
+            for (IMTTabController controller : controllers) {
+                if (C == null) {
+                    controller.dataOutput(h, d, A, n);
+                } else {
+                    controller.dataOutput(h, d, A, C, n);
+                }
+            }
+        }
     }
 
     /**
      * Функция очистки даты графиков
      */
     private void clearDataStackedBarChart() {
-        IMTStandardTabController.clearDataStackedBarChart();
-        IMTNoStandardTabController.clearDataStackedBarChart();
+        for (IMTTabController controller : controllers) {
+            controller.clearDataStackedBarChart();
+        }
     }
 
     /**
@@ -197,5 +232,10 @@ public class IMTMainPageController {
 
     public void aboutProgramMenuClick(ActionEvent event) {
         StartFrame.startHelp();
+    }
+
+
+    public void setInitializeArray(boolean initializeArray) {
+        this.initializeArray = initializeArray;
     }
 }

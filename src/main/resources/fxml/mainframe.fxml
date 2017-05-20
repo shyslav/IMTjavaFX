@@ -32,12 +32,6 @@
         <TabPane fx:id="IMTTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                  AnchorPane.topAnchor="0.0">
-            <Tab text="Задача управління запасами">
-                <fx:include fx:id="IMTStandardTab" source="parts/imttab.fxml"/>
-            </Tab>
-            <Tab text="Ускладнена задача управління запасам">
-                <fx:include fx:id="IMTNoStandardTab" source="parts/imttab.fxml"/>
-            </Tab>
         </TabPane>
         <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;"
                text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f"
